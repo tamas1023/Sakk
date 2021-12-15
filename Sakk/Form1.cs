@@ -13,14 +13,42 @@ namespace Sakk
     public partial class Form1 : Form
     {
         static PictureBox[,] kepek = new PictureBox[8, 8];
+        static Babuk[,] babok = new Babuk[8,8];
         public Form1()
         {
             InitializeComponent();
+           
+        }
+
+        private void babokfeltoltese()
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                        babok[i, j] = new Babuk(-1, "", "");  
+                }
+            }
+
+            for (int j = 0; j <8; j++)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+
+                    if (j==1)
+                    {
+                        babok[i,j] = new Babuk(i, "gyalog", "feher");
+                        //kepek[i, j].BackColor = Color.Black; erre a sorra rakná a fekete gyalogokat
+                    }
+                }
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             tablageneralas();
+            babokfeltoltese();
         }
         private void tablageneralas()
         {
@@ -97,8 +125,9 @@ namespace Sakk
         private void palyaklikk(object sender, EventArgs e)
         {
             PictureBox kapcsolt = sender as PictureBox;
-            MessageBox.Show("i:" + kapcsolt.Tag + "j: " + kapcsolt.Name);
-            MessageBox.Show("name: j:" +kepek[Convert.ToInt32(kapcsolt.Tag),Convert.ToInt32(kapcsolt.Name)].Name+"tag: i: "+ kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tag);
+
+           // MessageBox.Show("i:" + kapcsolt.Tag + "j: " + kapcsolt.Name);
+          //  MessageBox.Show("name: j:" +kepek[Convert.ToInt32(kapcsolt.Tag),Convert.ToInt32(kapcsolt.Name)].Name+"tag: i: "+ kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tag);
             
         }
 
