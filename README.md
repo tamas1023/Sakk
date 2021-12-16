@@ -1,7 +1,7 @@
 # Sakk
 
 
-#Design ötletek
+# Design ötletek
 
 az app keretének levétele, és az designolása
 kiválasztani egy jó színkombinációt
