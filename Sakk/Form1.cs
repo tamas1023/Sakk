@@ -34,14 +34,22 @@ namespace Sakk
                         babok[i, j] = new Babuk(-1, "", "",0,0);  
                 }
             }
-            babok[0, 0] = new Babuk(0, "bástlya", "fehér", 0, 0);
+            babok[0, 0] = new Babuk(0, "bástya", "fehér", 0, 0);
             kepek[0, 0].Image = Image.FromFile("../../img/white_rook.png");
             babok[1, 0] = new Babuk(1,"huszár", "fehér", 1, 0);
             kepek[1, 0].Image = Image.FromFile("../../img/white_knight.png");
             babok[2, 0] = new Babuk(2,"futó", "fehér", 2, 0);
             kepek[2, 0].Image = Image.FromFile("../../img/white_bishop.png");
-            babok[2, 0] = new Babuk(2,"futó", "fehér", 2, 0);
-            kepek[2, 0].Image = Image.FromFile("../../img/white_bishop.png");
+            babok[3, 0] = new Babuk(3,"vezér", "fehér", 3, 0);
+            kepek[3, 0].Image = Image.FromFile("../../img/white_queen.png");
+            babok[4, 0] = new Babuk(4, "király", "fehér", 4, 0);
+            kepek[4, 0].Image = Image.FromFile("../../img/white_king.png");
+            babok[5, 0] = new Babuk(5, "futó", "fehér", 5, 0);
+            kepek[5, 0].Image = Image.FromFile("../../img/white_bishop.png");
+            babok[6, 0] = new Babuk(6, "huszár", "fehér", 6, 0);
+            kepek[6, 0].Image = Image.FromFile("../../img/white_knight.png");
+            babok[7, 0] = new Babuk(7, "bástya", "fehér", 7, 0);
+            kepek[7, 0].Image = Image.FromFile("../../img/white_rook.png");
             for (int j = 0; j <8; j++)
             {
                 for (int i = 0; i < 8; i++)
@@ -142,8 +150,8 @@ namespace Sakk
             if(valaszt)
             {
                 if(babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Id >= 0)
-                { 
-                
+                {
+                torolszinek();
                 honnani = Convert.ToInt32(kapcsolt.Tag);
                 honnanj = Convert.ToInt32(kapcsolt.Name);
                 babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].lephete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), lephetlista);
