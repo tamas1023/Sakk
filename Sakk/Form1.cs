@@ -14,6 +14,11 @@ namespace Sakk
     {
         static PictureBox[,] kepek = new PictureBox[8, 8];
         static Babuk[,] babok = new Babuk[8,8];
+        static int honnani;
+        static int honnanj;
+        static bool valaszt = true;
+        static bool uthet = true;
+        static List<int> lephetlista = new List<int>();
         public Form1()
         {
             InitializeComponent();
@@ -26,10 +31,17 @@ namespace Sakk
             {
                 for (int i = 0; i < 8; i++)
                 {
-                        babok[i, j] = new Babuk(-1, "", "");  
+                        babok[i, j] = new Babuk(-1, "", "",0,0);  
                 }
             }
-
+            babok[0, 0] = new Babuk(0, "bástlya", "fehér", 0, 0);
+            kepek[0, 0].Image = Image.FromFile("../../img/white_rook.png");
+            babok[1, 0] = new Babuk(1,"huszár", "fehér", 1, 0);
+            kepek[1, 0].Image = Image.FromFile("../../img/white_knight.png");
+            babok[2, 0] = new Babuk(2,"futó", "fehér", 2, 0);
+            kepek[2, 0].Image = Image.FromFile("../../img/white_bishop.png");
+            babok[2, 0] = new Babuk(2,"futó", "fehér", 2, 0);
+            kepek[2, 0].Image = Image.FromFile("../../img/white_bishop.png");
             for (int j = 0; j <8; j++)
             {
                 for (int i = 0; i < 8; i++)
@@ -37,9 +49,9 @@ namespace Sakk
 
                     if (j==1)
                     {
-                        babok[i,j] = new Babuk(i, "gyalog", "feher");
-                        //kepek[i, j].BackColor = Color.Black; erre a sorra rakná a fekete gyalogokat
-                    }
+                        babok[i,j] = new Babuk(i, "gyalog", "fehér",i,j);
+                        kepek[i, j].Image = Image.FromFile("../../img/white_pawn.png");
+                     }
                 }
             }
             
@@ -50,6 +62,7 @@ namespace Sakk
             tablageneralas();
             babokfeltoltese();
         }
+
         private void tablageneralas()
         {
             int db = 0;
@@ -98,7 +111,7 @@ namespace Sakk
                         }
                         else
                         {
-                            kep.BackColor = Color.Black;
+                            kep.BackColor = Color.Gray;
                         }
 
                     }
@@ -106,7 +119,7 @@ namespace Sakk
                     {
                         if (j % 2 == 0)
                         {
-                            kep.BackColor = Color.Black;
+                            kep.BackColor = Color.Gray;
                         }
                         else
                         {
@@ -126,10 +139,109 @@ namespace Sakk
         {
             PictureBox kapcsolt = sender as PictureBox;
 
-           // MessageBox.Show("i:" + kapcsolt.Tag + "j: " + kapcsolt.Name);
-          //  MessageBox.Show("name: j:" +kepek[Convert.ToInt32(kapcsolt.Tag),Convert.ToInt32(kapcsolt.Name)].Name+"tag: i: "+ kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tag);
-            
+            if(valaszt)
+            {
+                if(babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Id >= 0)
+                { 
+                
+                honnani = Convert.ToInt32(kapcsolt.Tag);
+                honnanj = Convert.ToInt32(kapcsolt.Name);
+                babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].lephete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), lephetlista);
+                szinezes();
+                }
+                if (valaszt && kapcsolt.Image == null)
+                {
+                    valaszt = false;
+                }
+            }
+           
+            if(!valaszt)
+            {
+                // MessageBox.Show(babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Szin + "típus: " + babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tipus);
+                //MessageBox.Show("name: babok[honnani,honnanj].huszar()j:" +kepek[Convert.ToInt32(kapcsolt.Tag),Convert.ToInt32(kapcsolt.Name)].Name+"tag: i: "+ kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tag);
+
+               
+                if (babok[honnani, honnanj].Tipus=="huszár")
+                {
+                    MessageBox.Show("huszár");
+                }
+                else
+                {
+                    MessageBox.Show("nem huszár");
+                }
+
+                
+               // MessageBox.Show("teszt:" + lephetlista[0]);
+                valaszt = true;
+                torolszinek();
+            }
+         
         }
 
+        private void szinezes()
+        {
+            int segedi = 0;
+            int segedj = 0;
+            int db = 0;
+          // MessageBox.Show(""+lephetlista.Count);
+            for (int i = 0; i < lephetlista.Count; i++)
+            {
+                if(i%2==0)
+                {
+                    //MessageBox.Show("belépett osztva 0");
+                    segedi = lephetlista[i];
+                    db++;
+                }
+                if(i%2==1)
+                {
+                   // MessageBox.Show("belépett osztva 1");
+                    segedj = lephetlista[i];
+                    db++;
+                }
+                if(db==2)
+                {
+                    //MessageBox.Show("szinezés:" + segedi + " " + segedj);
+                    kepek[segedi, segedj].BackColor = Color.Orange;
+                    db = 0;
+                }
+            }
+        }
+
+        private void torolszinek()
+        {
+            lephetlista.Clear();
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0;  j < 8;  j++)
+                {
+                    if(kepek[i,j].BackColor==Color.Orange)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            if (j % 2 == 0)
+                            {
+                                kepek[i, j].BackColor = Color.White;
+                            }
+                            else
+                            {
+                                kepek[i, j].BackColor = Color.Gray;
+                            }
+
+                        }
+                        else
+                        {
+                            if (j % 2 == 0)
+                            {
+                               kepek[i, j].BackColor = Color.Gray;
+                            }
+                            else
+                            {
+                                kepek[i, j].BackColor = Color.White;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
