@@ -181,7 +181,7 @@ namespace Sakk
                     torolszinek();
                     honnani = Convert.ToInt32(kapcsolt.Tag);
                     honnanj = Convert.ToInt32(kapcsolt.Name);
-                        MessageBox.Show("id:" +babok[honnani,honnanj].Id);
+                       // MessageBox.Show("id:" +babok[honnani,honnanj].Id);
                     babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].lephete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), lephetlista);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].uthete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), uthetlista);
                         szinezes();
@@ -198,7 +198,7 @@ namespace Sakk
                         torolszinek();
                         honnani = Convert.ToInt32(kapcsolt.Tag);
                         honnanj = Convert.ToInt32(kapcsolt.Name);
-                        MessageBox.Show("id:" + babok[honnani, honnanj].Id);
+                       // MessageBox.Show("id:" + babok[honnani, honnanj].Id);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].uthete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), uthetlista);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].lephete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), lephetlista);
                         szinezes();
