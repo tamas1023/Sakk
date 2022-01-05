@@ -218,6 +218,76 @@ namespace Sakk
                     }
                 }
             }
+            if(tipus== "király")
+            {
+                 if (i - 1 >= 0 && j - 1 >= 0)
+                { 
+                    if(babok[i - 1,j - 1].id == -1)
+                    { 
+                        lepesek.Add(i-1);
+                        lepesek.Add(j - 1);
+                    }
+                }
+                if (i - 1 >= 0 && j + 1 <8)
+                {
+                    if (babok[i - 1, j + 1].id == -1)
+                    {
+                        lepesek.Add(i - 1);
+                        lepesek.Add(j + 1);
+                    }
+                }
+                if (i - 1 >= 0)
+                {
+                    if (babok[i - 1, j].id == -1)
+                    {
+                        lepesek.Add(i - 1);
+                        lepesek.Add(j);
+                    }
+                }
+                if (i + 1 <8)
+                {
+                    if (babok[i + 1, j].id == -1)
+                    {
+                        lepesek.Add(i + 1);
+                        lepesek.Add(j);
+                    }
+                }
+
+
+
+                if (i + 1 <8 && j + 1 <8)
+                {
+                    if (babok[i +1, j + 1].id == -1)
+                    {
+                        lepesek.Add(i + 1);
+                        lepesek.Add(j + 1);
+                    }
+                }
+                if (i + 1 <8 && j - 1 >=0)
+                {
+                    if (babok[i + 1, j - 1].id == -1)
+                    {
+                        lepesek.Add(i + 1);
+                        lepesek.Add(j - 1);
+                    }
+                }
+                if (j - 1 >= 0)
+                {
+                    if (babok[i, j - 1].id == -1)
+                    {
+                        lepesek.Add(i);
+                        lepesek.Add(j - 1);
+                    }
+                }
+                if (j + 1 <8)
+                {
+                    if (babok[i, j + 1].id == -1)
+                    {
+                        lepesek.Add(i);
+                        lepesek.Add(j + 1);
+                    }
+                }
+            }
         }
         public void uthete(Babuk[,] babok, int i, int j, List<int> utesek)
         {
@@ -532,6 +602,76 @@ namespace Sakk
                             }
                         }
                         seged++;
+                    }
+                }
+            }
+            if (tipus == "király")
+            {
+                if (i - 1 >= 0 && j - 1 >= 0)
+                {
+                    if (babok[i - 1, j - 1].id != -1&&szin!=babok[i-1,j-1].szin)
+                    {
+                        utesek.Add(i - 1);
+                        utesek.Add(j - 1);
+                    }
+                }
+                if (i - 1 >= 0 && j + 1 < 8)
+                {
+                    if (babok[i - 1, j + 1].id != -1 && szin != babok[i - 1, j + 1].szin)
+                    {
+                        utesek.Add(i - 1);
+                        utesek.Add(j + 1);
+                    }
+                }
+                if (i - 1 >= 0)
+                {
+                    if (babok[i - 1, j].id != -1 && szin != babok[i - 1, j].szin)
+                    {
+                        utesek.Add(i - 1);
+                        utesek.Add(j);
+                    }
+                }
+                if (i + 1 < 8)
+                {
+                    if (babok[i + 1, j].id != -1 && szin != babok[i + 1, j].szin)
+                    {
+                        utesek.Add(i + 1);
+                        utesek.Add(j);
+                    }
+                }
+
+
+
+                if (i + 1 < 8 && j + 1 < 8)
+                {
+                    if (babok[i + 1, j + 1].id != -1 && szin != babok[i + 1, j+1].szin)
+                    {
+                        utesek.Add(i + 1);
+                        utesek.Add(j + 1);
+                    }
+                }
+                if (i + 1 < 8 && j - 1 >= 0)
+                {
+                    if (babok[i + 1, j - 1].id != -1 && szin != babok[i + 1, j-1].szin)
+                    {
+                        utesek.Add(i + 1);
+                        utesek.Add(j - 1);
+                    }
+                }
+                if (j - 1 >= 0)
+                {
+                    if (babok[i, j - 1].id != -1 && szin != babok[i, j-1].szin)
+                    {
+                        utesek.Add(i);
+                        utesek.Add(j - 1);
+                    }
+                }
+                if (j + 1 < 8)
+                {
+                    if (babok[i, j + 1].id != -1 && szin != babok[i, j+1].szin)
+                    {
+                        utesek.Add(i);
+                        utesek.Add(j + 1);
                     }
                 }
             }

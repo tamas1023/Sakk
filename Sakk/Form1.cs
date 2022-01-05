@@ -105,7 +105,7 @@ namespace Sakk
                 for (int j = 0; j < 8; j++)
                 {
                     PictureBox kep = new PictureBox();
-                    kep.Location = new System.Drawing.Point(20 + (i * 50), 20 + (j * 50));
+                    kep.Location = new System.Drawing.Point(0+ (i * 50), 0 + (j * 50));
                     kep.Name = j + "";
                     kep.Visible = true;
                     kep.Size = new System.Drawing.Size(50, 50);
@@ -161,7 +161,8 @@ namespace Sakk
                     }
                     kep.Tag = i;
                     kep.SizeMode = PictureBoxSizeMode.StretchImage;
-                    Controls.Add(kep);
+                    //Controls.Add(kep);
+                    panel1.Controls.Add(kep);
                     kepek[i, j] = kep;
                     kep.Click += new System.EventHandler(this.palyaklikk);
                 }
