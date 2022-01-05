@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Sakk
         static Babuk[,] babok = new Babuk[8,8];
         static int honnani;
         static int honnanj;
+        static string nev1;
+        static string nev2;
         static bool valaszt = true;
         static bool feher = true;
         static bool uthet = true;
@@ -25,7 +28,15 @@ namespace Sakk
         public Form1()
         {
             InitializeComponent();
-           
+            gombokkinezetvaltozas();
+        }
+
+        private void gombokkinezetvaltozas()
+        {
+            leirasBTN.FlatStyle = FlatStyle.Flat;
+            leirasBTN.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
         }
 
         private void babokfeltoltese()
@@ -92,8 +103,27 @@ namespace Sakk
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tablageneralas();
-            babokfeltoltese();
+            nev1 = textBox1.Text;
+            nev2 = textBox2.Text;
+            if (nev1=="" || nev2=="")
+            {
+                hibaLBL.Text = "Nincs megadva minden név!";
+            }
+            else
+            {
+                if (nev2==nev1)
+                {
+                    hibaLBL.Text = "Ne adjatok meg ugyanolyan nevet!";
+                }
+                else
+                {
+                    hibaLBL.Text = "";
+                    panel1.Visible = true;
+                    tablageneralas();
+                    babokfeltoltese();
+                }
+            }
+           
         }
 
         private void tablageneralas()
@@ -105,7 +135,7 @@ namespace Sakk
                 for (int j = 0; j < 8; j++)
                 {
                     PictureBox kep = new PictureBox();
-                    kep.Location = new System.Drawing.Point(20 + (i * 50), 20 + (j * 50));
+                    kep.Location = new System.Drawing.Point(0+ (i * 50), 0 + (j * 50));
                     kep.Name = j + "";
                     kep.Visible = true;
                     kep.Size = new System.Drawing.Size(50, 50);
@@ -161,7 +191,8 @@ namespace Sakk
                     }
                     kep.Tag = i;
                     kep.SizeMode = PictureBoxSizeMode.StretchImage;
-                    Controls.Add(kep);
+                    //Controls.Add(kep);
+                    panel1.Controls.Add(kep);
                     kepek[i, j] = kep;
                     kep.Click += new System.EventHandler(this.palyaklikk);
                 }
@@ -330,5 +361,16 @@ namespace Sakk
                 }
             }
         }
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
+                                                                       Color.Chocolate,
+                                                                       Color.WhiteSmoke,
+                                                                       90F))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+        }
     }
+    
 }
