@@ -172,7 +172,6 @@ namespace Sakk
         private void palyaklikk(object sender, EventArgs e)
         {
             PictureBox kapcsolt = sender as PictureBox;
-
             if(valaszt)
             {
                 if(feher)
@@ -188,6 +187,10 @@ namespace Sakk
                         szinezes();
                     }
                     if (valaszt && kapcsolt.Image == null)
+                    {
+                        valaszt = false;
+                    }
+                    if (valaszt && kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].BackColor == Color.Red)
                     {
                         valaszt = false;
                     }
@@ -208,9 +211,12 @@ namespace Sakk
                     {
                         valaszt = false;
                     }
+                    if (valaszt && kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].BackColor==Color.Red)
+                    {
+                        valaszt = false;
+                    }
                 }
-            }
-           
+            }    
             if(!valaszt&&kapcsolt.BackColor==Color.Orange)
             {
                 lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
@@ -229,7 +235,28 @@ namespace Sakk
                 valaszt = true;
                 torolszinek();
             }
-         
+            if(!valaszt&&kapcsolt.BackColor==Color.Red)
+            {
+                MessageBox.Show("üt");
+                utes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
+                lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
+                if (feher)
+                {
+                    feher = false;
+                }
+                else
+                {
+                    feher = true;
+                }
+                valaszt = true;
+                torolszinek();
+            }
+        }
+
+        private void utes(int i, int j)
+        {
+            kepek[i, j].Image = null;
+            babok[i, j] = new Babuk(-1, "", "", 0, 0);
         }
 
         private void lepes(int i,int j)
