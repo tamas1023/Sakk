@@ -288,6 +288,93 @@ namespace Sakk
                     }
                 }
             }
+            if(tipus=="vezér")
+            {
+                if (i + 1 < 8)
+                {
+                    while (i + seged < 8 && babok[i + seged, j].id == -1)
+                    {
+                        lepesek.Add(i + seged);
+                        lepesek.Add(j);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (i - 1 >= 0)
+                {
+                    while (i - seged >= 0 && babok[i - seged, j].id == -1)
+                    {
+                        lepesek.Add(i - seged);
+                        lepesek.Add(j);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8)
+                {
+                    while (j + seged < 8 && babok[i, j + seged].id == -1)
+                    {
+                        lepesek.Add(i);
+                        lepesek.Add(j + seged);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0)
+                {
+                    while (j - seged >= 0 && babok[i, j - seged].id == -1)
+                    {
+                        lepesek.Add(i);
+                        lepesek.Add(j - seged);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8 && i + 1 < 8)
+                {
+                    while (i + seged < 8 && j + seged < 8 && babok[i + seged, j + seged].id == -1)
+                    {
+
+                        lepesek.Add(i + seged);
+                        lepesek.Add(j + seged);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8 && i - 1 >= 0)
+                {
+                    while (i - seged >= 0 && j + seged < 8 && babok[i - seged, j + seged].id == -1)
+                    {
+
+                        lepesek.Add(i - seged);
+                        lepesek.Add(j + seged);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0 && i - 1 >= 0)
+                {
+                    while (i - seged >= 0 && j - seged >= 0 && babok[i - seged, j - seged].id == -1)
+                    {
+
+                        lepesek.Add(i - seged);
+                        lepesek.Add(j - seged);
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0 && i + 1 < 8)
+                {
+                    while (i + seged < 8 && j + seged >= 0 && babok[i + seged, j - seged].id == -1)
+                    {
+
+                        lepesek.Add(i + seged);
+                        lepesek.Add(j - seged);
+                        seged++;
+                    }
+                }
+                seged = 1;
+            }
         }
         public void uthete(Babuk[,] babok, int i, int j, List<int> utesek)
         {
@@ -672,6 +759,179 @@ namespace Sakk
                     {
                         utesek.Add(i);
                         utesek.Add(j + 1);
+                    }
+                }
+            }
+            if(tipus=="vezér")
+            {
+                if (j + 1 < 8 && i + 1 < 8)
+                {
+                    if (babok[i + seged, j + seged].id != -1 && szin != babok[i + seged, j + seged].szin)
+                    {
+                        utesek.Add(i + seged);
+                        utesek.Add(j + seged);
+                    }
+                    while (i + seged < 8 && j + seged < 8 && babok[i + seged, j + seged].id == -1)
+                    {
+                        if (i + seged + 1 < 8 && j + seged + 1 < 8)
+                        {
+                            if (babok[i + seged + 1, j + seged + 1].id != -1 && szin != babok[i + seged + 1, j + seged + 1].szin)
+                            {
+                                utesek.Add(i + seged + 1);
+                                utesek.Add(j + seged + 1);
+                            }
+                        }
+
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8 && i - 1 >= 0)
+                {
+                    if (babok[i - seged, j + seged].id != -1 && szin != babok[i - seged, j + seged].szin)
+                    {
+                        utesek.Add(i - seged);
+                        utesek.Add(j + seged);
+                    }
+                    while (i - seged >= 0 && j + seged < 8 && babok[i - seged, j + seged].id == -1)
+                    {
+                        if (i - seged - 1 >= 0 && j + seged + 1 < 8)
+                        {
+                            if (babok[i - seged - 1, j + seged + 1].id != -1 && szin != babok[i - seged - 1, j + seged + 1].szin)
+                            {
+                                utesek.Add(i - seged - 1);
+                                utesek.Add(j + seged + 1);
+                            }
+                        }
+
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0 && i - 1 >= 0)
+                {
+                    if (babok[i - seged, j - seged].id != -1 && szin != babok[i - seged, j - seged].szin)
+                    {
+                        utesek.Add(i - seged);
+                        utesek.Add(j - seged);
+                    }
+                    while (i - seged >= 0 && j - seged >= 0 && babok[i - seged, j - seged].id == -1)
+                    {
+                        if (i - seged - 1 >= 0 && j - seged - 1 >= 0)
+                        {
+                            if (babok[i - seged - 1, j - seged - 1].id != -1 && szin != babok[i - seged - 1, j - seged - 1].szin)
+                            {
+                                utesek.Add(i - seged - 1);
+                                utesek.Add(j - seged - 1);
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0 && i + 1 < 8)
+                {
+                    if (babok[i + seged, j - seged].id != -1 && szin != babok[i + seged, j - seged].szin)
+                    {
+                        utesek.Add(i + seged);
+                        utesek.Add(j - seged);
+                    }
+                    while (i + seged < 8 && j + seged >= 0 && babok[i + seged, j - seged].id == -1)
+                    {
+                        if (i + seged + 1 < 8 && j - seged - 1 >= 0)
+                        {
+                            if (babok[i + seged + 1, j - seged - 1].id != -1 && szin != babok[i + seged + 1, j - seged - 1].szin)
+                            {
+                                utesek.Add(i + seged + 1);
+                                utesek.Add(j - seged - 1);
+                            }
+                        }
+                        seged++;
+                    }
+
+                }
+                seged = 1;
+                if (i + 1 < 8)
+                {
+                    if (babok[i + seged, j].id != -1 && szin != babok[i + seged, j].szin)
+                    {
+                        utesek.Add(i + seged);
+                        utesek.Add(j);
+                    }
+                    while (i + seged < 8 && babok[i + seged, j].id == -1)
+                    {
+                        if (i + seged + 1 < 8)
+                        {
+                            if (babok[i + seged + 1, j].id != -1 && szin != babok[i + seged + 1, j].szin)
+                            {
+                                utesek.Add(i + seged + 1);
+                                utesek.Add(j);
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (i - 1 >= 0)
+                {
+                    if (babok[i - seged, j].id != -1 && szin != babok[i - seged, j].szin)
+                    {
+                        utesek.Add(i - seged);
+                        utesek.Add(j);
+                    }
+                    while (i - seged >= 0 && babok[i - seged, j].id == -1)
+                    {
+                        if (i - seged - 1 >= 0)
+                        {
+                            if (babok[i - seged - 1, j].id != -1 && szin != babok[i - seged - 1, j].szin)
+                            {
+                                utesek.Add(i - seged - 1);
+                                utesek.Add(j);
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8)
+                {
+                    if (babok[i, j + seged].id != -1 && szin != babok[i, j + seged].szin)
+                    {
+                        utesek.Add(i);
+                        utesek.Add(j + seged);
+                    }
+                    while (j + seged < 8 && babok[i, j + seged].id == -1)
+                    {
+                        if (j + seged + 1 < 8)
+                        {
+                            if (babok[i, j + seged + 1].id != -1 && szin != babok[i, j + seged + 1].szin)
+                            {
+                                utesek.Add(i);
+                                utesek.Add(j + seged + 1);
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0)
+                {
+                    if (babok[i, j - seged].id != -1 && szin != babok[i, j - seged].szin)
+                    {
+                        utesek.Add(i);
+                        utesek.Add(j - seged);
+                    }
+                    while (j - seged >= 0 && babok[i, j - seged].id == -1)
+                    {
+                        if (j - seged - 1 >= 0)
+                        {
+                            if (babok[i, j - seged - 1].id != -1 && szin != babok[i, j - seged - 1].szin)
+                            {
+                                utesek.Add(i);
+                                utesek.Add(j - seged - 1);
+                            }
+                        }
+                        seged++;
                     }
                 }
             }
