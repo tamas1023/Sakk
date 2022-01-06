@@ -29,6 +29,7 @@ namespace Sakk
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -38,6 +39,8 @@ namespace Sakk
             this.leirasBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.hibaLBL = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -58,7 +61,7 @@ namespace Sakk
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(54, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 400);
+            this.panel1.Size = new System.Drawing.Size(41, 18);
             this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
             // 
@@ -135,12 +138,24 @@ namespace Sakk
             this.hibaLBL.Size = new System.Drawing.Size(0, 19);
             this.hibaLBL.TabIndex = 8;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(27, 36);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(495, 377);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.hibaLBL);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.leirasBTN);
@@ -152,6 +167,7 @@ namespace Sakk
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Sakk";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +184,7 @@ namespace Sakk
         private System.Windows.Forms.Button leirasBTN;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label hibaLBL;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

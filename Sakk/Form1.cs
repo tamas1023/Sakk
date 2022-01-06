@@ -103,6 +103,8 @@ namespace Sakk
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panel1.Size = new Size(400, 400);
+            pictureBox1.Visible = false;
             nev1 = textBox1.Text;
             nev2 = textBox2.Text;
             if (nev1=="" || nev2=="")
