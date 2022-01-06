@@ -19,6 +19,8 @@ namespace Sakk
         static int honnanj;
         static string nev1;
         static string nev2;
+        static int honvaigyalog;
+        static int honvajgyalog;
         static bool valaszt = true;
         static bool feher = true;
         static bool uthet = true;
@@ -37,6 +39,7 @@ namespace Sakk
             leirasBTN.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
+
         }
 
         private void babokfeltoltese()
@@ -204,7 +207,6 @@ namespace Sakk
         private void palyaklikk(object sender, EventArgs e)
         {
             PictureBox kapcsolt = sender as PictureBox;
-
             if(valaszt)
             {
                 if(feher)
@@ -220,6 +222,10 @@ namespace Sakk
                         szinezes();
                     }
                     if (valaszt && kapcsolt.Image == null)
+                    {
+                        valaszt = false;
+                    }
+                    if (valaszt && kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].BackColor == Color.Red)
                     {
                         valaszt = false;
                     }
@@ -240,9 +246,12 @@ namespace Sakk
                     {
                         valaszt = false;
                     }
+                    if (valaszt && kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].BackColor==Color.Red)
+                    {
+                        valaszt = false;
+                    }
                 }
-            }
-           
+            }    
             if(!valaszt&&kapcsolt.BackColor==Color.Orange)
             {
                 lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
@@ -261,7 +270,28 @@ namespace Sakk
                 valaszt = true;
                 torolszinek();
             }
-         
+            if(!valaszt&&kapcsolt.BackColor==Color.Red)
+            {
+                //MessageBox.Show("üt");
+                utes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
+                lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
+                if (feher)
+                {
+                    feher = false;
+                }
+                else
+                {
+                    feher = true;
+                }
+                valaszt = true;
+                torolszinek();
+            }
+        }
+
+        private void utes(int i, int j)
+        {
+            kepek[i, j].Image = null;
+            babok[i, j] = new Babuk(-1, "", "", 0, 0);
         }
 
         private void lepes(int i,int j)
@@ -272,6 +302,44 @@ namespace Sakk
 
             babok[i, j] = babok[honnani, honnanj];
             babok[honnani, honnanj]= babok[honnani, honnanj] = new Babuk(-1, "", "", 0, 0);
+            if(babok[i,j].Tipus=="gyalog")
+                {
+                gyalogvaltas(i,j);
+            }
+        }
+
+        private void gyalogvaltas(int i, int j)
+        {
+                if(j==7)
+                {
+                    honvaigyalog = i;
+                    honvajgyalog = j;
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = true;
+                    pictureBox3.Visible = true;
+                    pictureBox4.Visible = true;
+                    pictureBox1.Image= Image.FromFile("../../img/white_rook.png");
+                    pictureBox2.Image= Image.FromFile("../../img/white_knight.png");
+                    pictureBox3.Image= Image.FromFile("../../img/white_bishop.png");
+                    pictureBox4.Image= Image.FromFile("../../img/white_queen.png");
+                    panel1.Enabled = false;
+
+                }
+                if (j == 0)
+                {
+                    honvaigyalog = i;
+                    honvajgyalog = j;
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = true;
+                    pictureBox3.Visible = true;
+                    pictureBox4.Visible = true;
+                    pictureBox1.Image = Image.FromFile("../../img/black_rook.png");
+                    pictureBox2.Image = Image.FromFile("../../img/black_knight.png");
+                    pictureBox3.Image = Image.FromFile("../../img/black_bishop.png");
+                    pictureBox4.Image = Image.FromFile("../../img/black_queen.png");
+                    panel1.Enabled = false;
+
+                }
         }
 
         private void szinezes()
@@ -363,6 +431,7 @@ namespace Sakk
                 }
             }
         }
+
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
@@ -372,6 +441,48 @@ namespace Sakk
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox1.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus ="bástya";
+            pictureboxeltuntetes();
+                
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox2.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus = "huszár";
+            pictureboxeltuntetes();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox3.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus = "futó";
+            pictureboxeltuntetes();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox4.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus = "vezér";
+            pictureboxeltuntetes();
+        }
+
+        private void pictureboxeltuntetes()
+        {
+            pictureBox1.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = false;
+            pictureBox4.Visible = false;
+
         }
     }
     
