@@ -16,6 +16,8 @@ namespace Sakk
         static Babuk[,] babok = new Babuk[8,8];
         static int honnani;
         static int honnanj;
+        static int honvaigyalog;
+        static int honvajgyalog;
         static bool valaszt = true;
         static bool feher = true;
         static bool uthet = true;
@@ -25,7 +27,7 @@ namespace Sakk
         public Form1()
         {
             InitializeComponent();
-           
+
         }
 
         private void babokfeltoltese()
@@ -237,7 +239,7 @@ namespace Sakk
             }
             if(!valaszt&&kapcsolt.BackColor==Color.Red)
             {
-                MessageBox.Show("üt");
+                //MessageBox.Show("üt");
                 utes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
                 lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
                 if (feher)
@@ -267,6 +269,44 @@ namespace Sakk
 
             babok[i, j] = babok[honnani, honnanj];
             babok[honnani, honnanj]= babok[honnani, honnanj] = new Babuk(-1, "", "", 0, 0);
+            if(babok[i,j].Tipus=="gyalog")
+                {
+                gyalogvaltas(i,j);
+            }
+        }
+
+        private void gyalogvaltas(int i, int j)
+        {
+                if(j==7)
+                {
+                    honvaigyalog = i;
+                    honvajgyalog = j;
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = true;
+                    pictureBox3.Visible = true;
+                    pictureBox4.Visible = true;
+                    pictureBox1.Image= Image.FromFile("../../img/white_rook.png");
+                    pictureBox2.Image= Image.FromFile("../../img/white_knight.png");
+                    pictureBox3.Image= Image.FromFile("../../img/white_bishop.png");
+                    pictureBox4.Image= Image.FromFile("../../img/white_queen.png");
+                    panel1.Enabled = false;
+
+                }
+                if (j == 0)
+                {
+                    honvaigyalog = i;
+                    honvajgyalog = j;
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = true;
+                    pictureBox3.Visible = true;
+                    pictureBox4.Visible = true;
+                    pictureBox1.Image = Image.FromFile("../../img/black_rook.png");
+                    pictureBox2.Image = Image.FromFile("../../img/black_knight.png");
+                    pictureBox3.Image = Image.FromFile("../../img/black_bishop.png");
+                    pictureBox4.Image = Image.FromFile("../../img/black_queen.png");
+                    panel1.Enabled = false;
+
+                }
         }
 
         private void szinezes()
@@ -357,6 +397,47 @@ namespace Sakk
                     }
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox1.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus ="bástya";
+            pictureboxeltuntetes();
+                
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox2.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus = "huszár";
+            pictureboxeltuntetes();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox3.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus = "futó";
+            pictureboxeltuntetes();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+            kepek[honvaigyalog, honvajgyalog].Image = pictureBox4.Image;
+            babok[honvaigyalog, honvajgyalog].Tipus = "vezér";
+            pictureboxeltuntetes();
+        }
+
+        private void pictureboxeltuntetes()
+        {
+            pictureBox1.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = false;
+            pictureBox4.Visible = false;
         }
     }
 }

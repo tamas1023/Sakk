@@ -937,6 +937,7 @@ namespace Sakk
             }
         }
 
+
         public int Id { get => id; set => id = value; }
         public string Tipus { get => tipus; set => tipus = value; }
         public string Szin { get => szin; set => szin = value; }
