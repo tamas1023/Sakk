@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Sakk
         static Babuk[,] babok = new Babuk[8,8];
         static int honnani;
         static int honnanj;
+        static string nev1;
+        static string nev2;
         static int honvaigyalog;
         static int honvajgyalog;
         static bool valaszt = true;
@@ -27,6 +30,15 @@ namespace Sakk
         public Form1()
         {
             InitializeComponent();
+            gombokkinezetvaltozas();
+        }
+
+        private void gombokkinezetvaltozas()
+        {
+            leirasBTN.FlatStyle = FlatStyle.Flat;
+            leirasBTN.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
 
         }
 
@@ -94,8 +106,29 @@ namespace Sakk
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tablageneralas();
-            babokfeltoltese();
+            panel1.Size = new Size(400, 400);
+            pictureBox1.Visible = false;
+            nev1 = textBox1.Text;
+            nev2 = textBox2.Text;
+            if (nev1=="" || nev2=="")
+            {
+                hibaLBL.Text = "Nincs megadva minden név!";
+            }
+            else
+            {
+                if (nev2==nev1)
+                {
+                    hibaLBL.Text = "Ne adjatok meg ugyanolyan nevet!";
+                }
+                else
+                {
+                    hibaLBL.Text = "";
+                    panel1.Visible = true;
+                    tablageneralas();
+                    babokfeltoltese();
+                }
+            }
+           
         }
 
         private void tablageneralas()
@@ -399,6 +432,17 @@ namespace Sakk
             }
         }
 
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
+                                                                       Color.Chocolate,
+                                                                       Color.WhiteSmoke,
+                                                                       90F))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             panel1.Enabled = true;
@@ -438,6 +482,8 @@ namespace Sakk
             pictureBox2.Visible = false;
             pictureBox3.Visible = false;
             pictureBox4.Visible = false;
+
         }
     }
+    
 }
