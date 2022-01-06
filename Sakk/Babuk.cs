@@ -94,7 +94,7 @@ namespace Sakk
             }
             if(tipus=="gyalog"&&szin=="fehér")
             {
-                if (j == 1 && babok[i, j + 2].id == -1)
+                if (j == 1 && babok[i, j + 2].id == -1&&babok[i,j+1].id==-1)
                 {
                     lepesek.Add(i);
                     lepesek.Add(j + 2);
@@ -112,7 +112,7 @@ namespace Sakk
             }
             if (tipus == "gyalog" && szin == "fekete")
             {
-                if (j == 6 &&babok[i,j-2].id==-1)
+                if (j == 6 &&babok[i,j-2].id==-1 && babok[i, j - 1].id == -1)
                 {
                     lepesek.Add(i);
                     lepesek.Add(j - 2);
