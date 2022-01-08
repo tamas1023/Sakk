@@ -43,7 +43,10 @@ namespace Sakk
             leirasBTN.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
-
+            tovabbutton.FlatStyle = FlatStyle.Flat;
+            tovabbutton.FlatAppearance.BorderSize = 0;
+            visszabutton.FlatStyle = FlatStyle.Flat;
+            visszabutton.FlatAppearance.BorderSize = 0;
         }
 
         private void babokfeltoltese()
@@ -506,6 +509,22 @@ namespace Sakk
             kepek[honvaigyalog, honvajgyalog].Image = pictureBox4.Image;
             babok[honvaigyalog, honvajgyalog].Tipus = "vezér";
             pictureboxeltuntetes();
+        }
+
+        private void leirasBTN_Click(object sender, EventArgs e)
+        {
+            if (leirasBTN.Text=="Szabályok")
+            {
+                tovabbutton.Visible = true;
+                visszabutton.Visible = true;
+                leirasBTN.Text = "Főmenü";
+            }
+            else
+            {
+                tovabbutton.Visible = false;
+                visszabutton.Visible = false;
+                leirasBTN.Text = "Szabályok";
+            }
         }
     }
 }

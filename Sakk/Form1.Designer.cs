@@ -37,13 +37,14 @@ namespace Sakk
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.leirasBTN = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.hibaLBL = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.tovabbutton = new System.Windows.Forms.Button();
+            this.visszabutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -96,7 +97,7 @@ namespace Sakk
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(551, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 23);
+            this.label1.Size = new System.Drawing.Size(63, 23);
             this.label1.TabIndex = 4;
             this.label1.Text = "Első név:";
             // 
@@ -107,7 +108,7 @@ namespace Sakk
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(551, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 23);
+            this.label2.Size = new System.Drawing.Size(91, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "Második név:";
             // 
@@ -124,16 +125,7 @@ namespace Sakk
             this.leirasBTN.TabIndex = 6;
             this.leirasBTN.Text = "Szabályok";
             this.leirasBTN.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(596, 345);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Ide majd a készítők jön, és esetleg kép";
-            this.label3.Visible = false;
+            this.leirasBTN.Click += new System.EventHandler(this.leirasBTN_Click);
             // 
             // hibaLBL
             // 
@@ -148,7 +140,7 @@ namespace Sakk
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(578, 335);
+            this.pictureBox2.Location = new System.Drawing.Point(570, 363);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(58, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -158,7 +150,7 @@ namespace Sakk
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(642, 335);
+            this.pictureBox3.Location = new System.Drawing.Point(634, 363);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(58, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -168,7 +160,7 @@ namespace Sakk
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(706, 335);
+            this.pictureBox4.Location = new System.Drawing.Point(698, 363);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(58, 50);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -178,7 +170,7 @@ namespace Sakk
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(514, 335);
+            this.pictureBox5.Location = new System.Drawing.Point(506, 363);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(58, 50);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -197,16 +189,43 @@ namespace Sakk
             this.pictureBox6.TabIndex = 10;
             this.pictureBox6.TabStop = false;
             // 
+            // tovabbutton
+            // 
+            this.tovabbutton.BackColor = System.Drawing.Color.Transparent;
+            this.tovabbutton.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tovabbutton.Location = new System.Drawing.Point(591, 287);
+            this.tovabbutton.Margin = new System.Windows.Forms.Padding(0);
+            this.tovabbutton.Name = "tovabbutton";
+            this.tovabbutton.Size = new System.Drawing.Size(90, 35);
+            this.tovabbutton.TabIndex = 11;
+            this.tovabbutton.Text = "Tovább";
+            this.tovabbutton.UseVisualStyleBackColor = false;
+            this.tovabbutton.Visible = false;
+            // 
+            // visszabutton
+            // 
+            this.visszabutton.BackColor = System.Drawing.Color.Transparent;
+            this.visszabutton.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.visszabutton.Location = new System.Drawing.Point(591, 340);
+            this.visszabutton.Margin = new System.Windows.Forms.Padding(0);
+            this.visszabutton.Name = "visszabutton";
+            this.visszabutton.Size = new System.Drawing.Size(90, 35);
+            this.visszabutton.TabIndex = 12;
+            this.visszabutton.Text = "Vissza";
+            this.visszabutton.UseVisualStyleBackColor = false;
+            this.visszabutton.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.visszabutton);
+            this.Controls.Add(this.tovabbutton);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.hibaLBL);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.leirasBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -239,7 +258,6 @@ namespace Sakk
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button leirasBTN;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label hibaLBL;
         private System.Windows.Forms.PictureBox pictureBox1;
 
@@ -249,6 +267,8 @@ namespace Sakk
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button tovabbutton;
+        private System.Windows.Forms.Button visszabutton;
     }
 }
 
