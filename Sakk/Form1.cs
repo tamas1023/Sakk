@@ -27,6 +27,7 @@ namespace Sakk
         static bool sakk = false;
         static List<int> lephetlista = new List<int>();
         static List<int> uthetlista = new List<int>();
+        static int hanyadik = 0;
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +44,10 @@ namespace Sakk
             leirasBTN.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
-
+            tovabbutton.FlatStyle = FlatStyle.Flat;
+            tovabbutton.FlatAppearance.BorderSize = 0;
+            visszabutton.FlatStyle = FlatStyle.Flat;
+            visszabutton.FlatAppearance.BorderSize = 0;
         }
 
         private void babokfeltoltese()
@@ -133,6 +137,11 @@ namespace Sakk
                     panel1.Visible = true;
                     tablageneralas();
                     babokfeltoltese();
+                    leirasBTN.Visible = false;
+                    button1.Visible = false;
+                    textBox1.Enabled = false;
+                    textBox2.Enabled = false;
+                    
                 }
             }
 
@@ -506,6 +515,132 @@ namespace Sakk
             kepek[honvaigyalog, honvajgyalog].Image = pictureBox4.Image;
             babok[honvaigyalog, honvajgyalog].Tipus = "vezér";
             pictureboxeltuntetes();
+        }
+
+        private void leirasBTN_Click(object sender, EventArgs e)
+        {
+            if (leirasBTN.Text=="Szabályok")
+            {
+                pictureBox6.Visible = false;
+                button1.Visible = false;
+                textBox1.Visible = false;
+                textBox2.Visible = false;
+                label1.Visible = false;
+                label2.Visible = false;
+                tovabbutton.Visible = true;
+                visszabutton.Visible = true;
+                leirasBTN.Text = "Főmenü";
+                LeirasLBL.Text = "Szöveg!";
+                hanyadik = 0;
+                kiiras();
+            }
+            else
+            {
+                pictureBox6.Visible = true;
+                button1.Visible = true;
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+                label1.Visible = true;
+                label2.Visible = true;
+                tovabbutton.Visible = false;
+                visszabutton.Visible = false;
+                LeirasLBL.Text = "";
+                leirasBTN.Text = "Szabályok";
+                pictureBox7.Image = null;
+            }
+            
+        }
+
+        private void tovabbutton_Click(object sender, EventArgs e)
+        {
+            if (hanyadik >= 0 && hanyadik <= 7)
+            {
+                if (tovabbutton.Text == "Tovább")
+                {
+                    hanyadik++;
+                }
+            }
+            
+
+            kiiras();
+        }
+
+        private void kiiras()
+        {
+            if (hanyadik == 0)
+            {
+                pictureBox7.Image = Image.FromFile("../../img/sakktabla.png");
+                LeirasLBL.Text = "A sakkjátékot két játékos játssza egymás ellen a négyzet alakú, nyolc sorra és nyolc oszlopra felosztott sakktáblán, 16–16, azaz összesen 32 bábuval. A két játékos bábui határozottan eltérő színűek. A színek elnevezése világos, illetve sötét. A játékosok felváltva lépnek, és mindkettejük célja, hogy a másik fél király nevű figuráját a játékszabályok szerint bemattolják (azaz megtámadják, mégpedig úgy, hogy a támadást ne tudja elhárítani).";
+                //kep1.Image = Image.FromFile("kep1.jpg");
+            }
+            if (hanyadik == 1)
+            {
+                pictureBox7.Image = Image.FromFile("../../img/sakkbabuk.png");
+                LeirasLBL.Text = "A játék kezdetén a világosnak és a sötétnek ugyanannyi figurája van: 1–1 király, 1–1 vezér (alternatív neve: „királynő”), 2–2 bástya (alternatív neve: „torony”), 2–2 huszár (alternatív neve: „ló”), 2–2 futó és 8–8 gyalog (alternatív neve: „paraszt”). A figurák kiindulási helyzetét, illetve mozgatásuk lehetőségeit a játék szabálya határozza meg.";
+                
+            }
+            if (hanyadik == 2)
+            {
+                //király
+                pictureBox7.Image = Image.FromFile("../../img/kiraly.png");
+                LeirasLBL.Text = "A király a játék legfontosabb bábja, hiszen az egész játék a bemattolására irányul. Bármely irányban (vízszintesen, függőlegesen, átlósan) léphet, de csak egy mezőt, kivéve ha sáncol.Két király nem állhat közvetlen egymás mellett.A király mozgását korlátozza, hogy sakkba nem léphet, azaz nem állhat olyan mezőre, amelyen ki lehetne ütni. Ha mégis megtámadják, akkor a Sakkadás című szakaszban ismertetett háromféle mód valamelyikével meg kell szüntetni a támadást. Amennyiben az ott leírtak közül egyiket sem lehet végrehajtani, de a király ütésben van, akkor a király mattot kapott.";
+                
+            }
+            if (hanyadik == 3)
+            {
+                //vezér
+                pictureBox7.Image = Image.FromFile("../../img/vezer.png");
+                LeirasLBL.Text = "A vezér mozgása olyan, mintha egyesítettünk volna egy futót egy bástyával, azaz egyenesen vagy átlósan bármely irányban, bármennyi mezőt léphet, mindaddig, amíg a tábla széléhez nem ér, vagy egy másik figura nem kerül az útjába (ha ez ellenséges figura, kiütheti, ha saját báb, meg kell állnia egy mezővel előtte). E szabály egyébként a huszár (és a sáncolás nevű lépés) kivételével minden figurára igaz. Tág mozgáslehetőségéből adódóan a vezér a sakkjáték legerősebb figurája.";
+                
+            }
+            if (hanyadik == 4)
+            {
+                //Bástya
+                pictureBox7.Image = Image.FromFile("../../img/bastya.png");
+                LeirasLBL.Text = "A bástya bármennyi mezőt léphet, de csak függőleges és vízszintes irányban, átlósan nem, így egy helyről, bárhol is áll a sakktáblán, 14 mezőre léphet, ha másik figura nincs az útjában. Legjobban a nyílt vonalakat „kedvelik”, azaz az olyan vonalakat, amelyeken nem áll más bábu, mert itt tudják legjobban kifejteni erejüket. Kivételes lépése a sáncolás. A megnyitásban a világossal játszó játékos bástyái az a1-es és a h1-es, a sötéttel játszó félé pedig az a8-as és a h8-as mezőkön helyezkednek el.";
+                
+            }
+            if (hanyadik == 5)
+            {
+                //futó
+                pictureBox7.Image = Image.FromFile("../../img/futo.png");
+                LeirasLBL.Text = "A futók átlós irányban léphetnek, bármennyi mezőt, amíg egy másik báb nem kerül útjába. A játékosok a játék elején két-két futóval rendelkeznek, melyek közül az egyik csak a sötét, a másik csak a világos mezőkön közlekedik. A futók a megnyitásban a világossal játszó félnek a c1-es és az f1-es, a sötét bábukkal játszó játékosnak pedig a c8-as és az f8-as mezején helyezkednek el.";
+                
+            }
+            if (hanyadik == 6)
+            {
+                //huszár
+                pictureBox7.Image = Image.FromFile("../../img/huszar.png");
+                LeirasLBL.Text = "A huszár a róla elnevezett „lóugrásban” lép: vízszintesen jobbra vagy balra két mezőt, majd függőlegesen fel vagy le egyet (vagy fordítva: függőlegesen fel vagy le kettőt és vízszintesen jobbra vagy balra egyet). Mivel a huszárnak nincs konkrét menetiránya, csak kiindulási és érkezési mezője (azaz nem „halad”, hanem ugrik), nincs értelme „útjában álló bábról” beszélni. A huszár lépéslehetőségeit egyedül az korlátozza, ha a tábla szélén vagy a sarokban áll, illetve ha saját figurák állnak az érkezési mezején.";
+
+            }
+            if (hanyadik == 7)
+            {
+                //gyalog
+                pictureBox7.Image = Image.FromFile("../../img/gyalog.png");
+                LeirasLBL.Text = "A gyalog kizárólag előre léphet. A kiindulási helyéről mind a nyolc gyalog tetszés szerint egy vagy két mezőt léphet előre, de a továbbiakban lépésenként mindig csak egy mezőt haladhat előre. Ütni azonban csak jobbra vagy balra átlósan tud, szintén csak egy mezőnyi távolságra.Ha a gyalog áthaladt az egész táblán és eljutott az ellenfél alapsorába, átváltozik tisztté.Ez úgy történik, hogy a gyalogot levesszük a tábláról, és a helyére állítunk egy(a táblán levő állományon kívüli) vezért, bástyát, futót vagy huszárt, tetszés szerint, függetlenül attól, hogy a felvett figurából hány van már a táblán eszerint egy játszmában.";
+
+            }
+            if (hanyadik == 8)
+            {
+                pictureBox7.Image = null;
+                LeirasLBL.Text = "Lépés és ütés. Egy mezőn egy időben csak egy figura állhat. A játékot mindig világos kezdi, és tetszése szerint – de a szabályoknak adta kereteken belül – valamelyik figuráját áthelyezi egy másik mezőre. Ezt lépésnek hívjuk.Ezt követően sötét lép egyet.A játékosok felváltva lépnek, passzolásra nincs lehetőség(„lépéskényszer”). Ha egy mezőn az ellenfél bábuja áll, azt egy szabályos lépéssel ki lehet ütni: az ellenfél figuráját levesszük a tábláról, és saját, odalépő bábunkat tesszük a helyére.Saját figura kiütésére nincs lehetőség.";
+
+            }
+        }
+
+        private void visszabutton_Click(object sender, EventArgs e)
+        {
+            
+            if (hanyadik <= 8 && hanyadik > 0)
+            {
+                if (visszabutton.Text == "Vissza")
+                {
+                    hanyadik--;
+                }
+            }
+
+            kiiras();
         }
     }
 }
