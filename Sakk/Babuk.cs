@@ -395,6 +395,7 @@ namespace Sakk
                     {
                         utesek.Add(i - 2);
                         utesek.Add(j + 1);
+                        
                     }
                 }
                 if (i + 2 <= 7 && j + 1 <= 7)
@@ -403,6 +404,7 @@ namespace Sakk
                     {
                         utesek.Add(i + 2);
                         utesek.Add(j + 1);
+                       
                     }
                 }
                 if (i + 2 <= 7 && j - 1 >= 0)
@@ -411,6 +413,7 @@ namespace Sakk
                     {
                         utesek.Add(i + 2);
                         utesek.Add(j - 1);
+                       
                     }
                 }
                 if (i + 1 <= 7 && j - 2 >= 0)
@@ -419,6 +422,7 @@ namespace Sakk
                     {
                         utesek.Add(i + 1);
                         utesek.Add(j - 2);
+                       
                     }
                 }
                 if (i - 1 >= 0 && j - 2 >= 0)
@@ -427,6 +431,7 @@ namespace Sakk
                     {
                         utesek.Add(i - 1);
                         utesek.Add(j - 2);
+                        
                     }
                 }
                 if (i - 1 >= 0 && j + 2 <= 7)
@@ -435,6 +440,7 @@ namespace Sakk
                     {
                         utesek.Add(i - 1);
                         utesek.Add(j + 2);
+                       
                     }
                 }
                 if (i + 1 <= 7 && j + 2 <= 7)
@@ -443,6 +449,7 @@ namespace Sakk
                     {
                         utesek.Add(i + 1);
                         utesek.Add(j + 2);
+                       
                     }
                 }
             }
@@ -934,6 +941,330 @@ namespace Sakk
                         seged++;
                     }
                 }
+            }
+
+        }
+        public void sakkvane(Babuk[,] babok, int i, int j, List<bool> sakkotadott, List<string> sakkbanszin)
+        {
+            int seged = 1;
+            if (tipus == "huszár")
+            {
+                if (i - 2 >= 0 && j - 1 >= 0)
+                {
+                    if (babok[i - 2, j - 1].id != -1 && szin != babok[i - 2, j - 1].szin && babok[i - 2, j - 1].tipus == "király")
+                    {
+                            if (szin == "fekete")
+                            {
+                            sakkotadott.Add(true);
+                            sakkbanszin.Add("fehér");
+                            }
+                            if(szin == "fehér")
+                            {
+                            sakkotadott.Add(true);
+                            sakkbanszin.Add("fekete");
+                            }
+                    }
+                }
+                if (i - 2 >= 0 && j + 1 <= 7)
+                {
+                    if (babok[i - 2, j + 1].id != -1 && szin != babok[i - 2, j + 1].szin && babok[i - 2, j + 1].tipus == "király")
+                    {
+                        
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+                if (i + 2 <= 7 && j + 1 <= 7)
+                {
+                    if (babok[i + 2, j + 1].id != -1 && szin != babok[i + 2, j + 1].szin && babok[i + 2, j + 1].tipus == "király")
+                    {
+                        
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+                if (i + 2 <= 7 && j - 1 >= 0)
+                {
+                    if (babok[i + 2, j - 1].id != -1 && szin != babok[i + 2, j - 1].szin && babok[i + 2, j - 1].tipus == "király")
+                    {
+                        
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+                if (i + 1 <= 7 && j - 2 >= 0)
+                {
+                    if (babok[i + 1, j - 2].id != -1 && szin != babok[i + 1, j - 2].szin && babok[i + 1, j - 2].tipus == "király")
+                    {
+                       
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+                if (i - 1 >= 0 && j - 2 >= 0)
+                {
+                    if (babok[i - 1, j - 2].id != -1 && szin != babok[i - 1, j - 2].szin && babok[i - 1, j - 2].tipus == "király")
+                    {
+                        
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+                if (i - 1 >= 0 && j + 2 <= 7)
+                {
+                    if (babok[i - 1, j + 2].id != -1 && szin != babok[i - 1, j + 2].szin && babok[i - 1, j + 2].tipus == "király")
+                    {
+                       
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+                if (i + 1 <= 7 && j + 2 <= 7)
+                {
+                    if (babok[i + 1, j + 2].id != -1 && szin != babok[i + 1, j + 2].szin && babok[i + 1, j + 2].tipus == "király")
+                    {
+                        
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        
+                    }
+                }
+            }
+            if (tipus == "vezér")
+            {
+                if (i + 1 < 8)
+                {
+                    while (i + seged < 8 && babok[i + seged, j].id == -1)
+                    {
+                        if(babok[i+seged,j].tipus=="király"&&babok[i+seged,j].szin!=szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (i - 1 >= 0)
+                {
+                    while (i - seged >= 0 && babok[i - seged, j].id == -1)
+                    {
+                        if (babok[i - seged, j].tipus == "király" && babok[i - seged, j].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8)
+                {
+                    while (j + seged < 8 && babok[i, j + seged].id == -1)
+                    {
+                        if (babok[i, j+seged].tipus == "király" && babok[i , j + seged].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0)
+                {
+                    while (j - seged >= 0 && babok[i, j - seged].id == -1)
+                    {
+                        if (babok[i, j - seged].tipus == "király" && babok[i, j - seged].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8 && i + 1 < 8)
+                {
+                    while (i + seged < 8 && j + seged < 8 && babok[i + seged, j + seged].id == -1)
+                    {
+
+                        if (babok[i+seged, j + seged].tipus == "király" && babok[i+seged, j + seged].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j + 1 < 8 && i - 1 >= 0)
+                {
+                    while (i - seged >= 0 && j + seged < 8 && babok[i - seged, j + seged].id == -1)
+                    {
+
+                        if (babok[i - seged, j + seged].tipus == "király" && babok[i - seged, j + seged].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0 && i - 1 >= 0)
+                {
+                    while (i - seged >= 0 && j - seged >= 0 && babok[i - seged, j - seged].id == -1)
+                    {
+                        if (babok[i - seged, j - seged].tipus == "király" && babok[i - seged, j - seged].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
+                if (j - 1 >= 0 && i + 1 < 8)
+                {
+                    while (i + seged < 8 && j + seged >= 0 && babok[i + seged, j - seged].id == -1)
+                    {
+
+                        if (babok[i + seged, j - seged].tipus == "király" && babok[i + seged, j - seged].szin != szin)
+                        {
+                            if (szin == "fekete")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fehér");
+                            }
+                            if (szin == "fehér")
+                            {
+                                sakkotadott.Add(true);
+                                sakkbanszin.Add("fekete");
+                            }
+                        }
+                        seged++;
+                    }
+                }
+                seged = 1;
             }
         }
 
