@@ -23,10 +23,12 @@ namespace Sakk
         static int honvajgyalog;
         static bool valaszt = true;
         static bool feher = true;
-        static bool uthet = true;
-        static bool sakk = false;
+        static string sakkszin ="fehér";
+        static bool sakkvane = false;
         static List<int> lephetlista = new List<int>();
         static List<int> uthetlista = new List<int>();
+        static List<bool> sakkotadott = new List<bool>();
+        static List<string> sakkbanszin = new List<string>();
         static int hanyadik = 0;
         public Form1()
         {
@@ -48,6 +50,12 @@ namespace Sakk
             tovabbutton.FlatAppearance.BorderSize = 0;
             visszabutton.FlatStyle = FlatStyle.Flat;
             visszabutton.FlatAppearance.BorderSize = 0;
+
+            feladasfeherbtn.FlatStyle = FlatStyle.Flat;
+            feladasfeherbtn.FlatAppearance.BorderSize = 0;
+            feladasfeketebn.FlatStyle = FlatStyle.Flat;
+            feladasfeketebn.FlatAppearance.BorderSize = 0;
+
         }
 
         private void babokfeltoltese()
@@ -141,6 +149,8 @@ namespace Sakk
                     button1.Visible = false;
                     textBox1.Enabled = false;
                     textBox2.Enabled = false;
+                    feladasfeherbtn.Visible = true;
+                    feladasfeketebn.Visible = true;
                     
                 }
             }
@@ -149,8 +159,6 @@ namespace Sakk
 
         private void tablageneralas()
         {
-            int db = 0;
-            int db2 = 0;
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -160,33 +168,8 @@ namespace Sakk
                     kep.Name = j + "";
                     kep.Visible = true;
                     kep.Size = new System.Drawing.Size(50, 50);
-                    if (j <= 2 && j >= 0)
-                    {
-                        db++;
-                        if (db == 8)
-                        {
-                            db = 0;
-                        }
-                        if (db % 2 == 1)
-                        {
-                            // kep.Image = Image.FromFile("feher.png");
-                            //dama[i, j] = 1;
-                        }
-
-                    }
-                    if (j <= 7 && j >= 5)
-                    {
-                        db2++;
-                        if (db2 == 8)
-                        {
-                            db2 = 0;
-                        }
-                        if (db2 % 2 == 0)
-                        {
-                            //kep.Image = Image.FromFile("fekete.png");
-                            //dama[i, j] = 2;
-                        }
-                    }
+                
+                  
                     if (i % 2 == 0)
                     {
                         if (j % 2 == 0)
@@ -225,6 +208,7 @@ namespace Sakk
             PictureBox kapcsolt = sender as PictureBox;
             if (valaszt)
             {
+                
                 if (feher)
                 {
                     if (babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Id >= 0 && babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Szin == "fehér")
@@ -232,7 +216,6 @@ namespace Sakk
                         torolszinek();
                         honnani = Convert.ToInt32(kapcsolt.Tag);
                         honnanj = Convert.ToInt32(kapcsolt.Name);
-                        // MessageBox.Show("id:" +babok[honnani,honnanj].Id);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].lephete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), lephetlista);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].uthete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), uthetlista);
                         szinezes();
@@ -253,7 +236,6 @@ namespace Sakk
                         torolszinek();
                         honnani = Convert.ToInt32(kapcsolt.Tag);
                         honnanj = Convert.ToInt32(kapcsolt.Name);
-                        // MessageBox.Show("id:" + babok[honnani, honnanj].Id);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].uthete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), uthetlista);
                         babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].lephete(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), lephetlista);
                         szinezes();
@@ -271,6 +253,24 @@ namespace Sakk
             if (!valaszt && kapcsolt.BackColor == Color.Orange)
             {
                 lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
+                babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].sakkvane(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), sakkotadott, sakkbanszin);
+                 //MessageBox.Show(sakkszin);
+                sakkbanvane();
+                if (sakkvane)
+                {
+                   // MessageBox.Show(sakkszin);
+                    for (int j = 0; j < 7; j++)
+                    {
+                        for (int i = 0; i < 7; i++)
+                        {
+                            if (babok[i, j].Tipus == "király" && babok[i, j].Szin == sakkszin)
+                            {
+                                kepek[i, j].BackColor = Color.Brown;
+                                MessageBox.Show("Sakkban van a " + sakkszin + " Király");
+                            }
+                        }
+                    }
+                }
                 //MessageBox.Show(babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Szin + "típus: " + babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tipus);
                 // MessageBox.Show("name: babok[honnani,honnanj].huszar()j:" +kepek[Convert.ToInt32(kapcsolt.Tag),Convert.ToInt32(kapcsolt.Name)].Name+"tag: i: "+ kepek[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].Tag);
 
@@ -285,12 +285,32 @@ namespace Sakk
                 // MessageBox.Show("teszt:" + lephetlista[0]);
                 valaszt = true;
                 torolszinek();
+                sakkvane = false;
             }
             if (!valaszt && kapcsolt.BackColor == Color.Red)
             {
                 //MessageBox.Show("üt");
+                
                 utes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
                 lepes(Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name));
+                babok[Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name)].sakkvane(babok, Convert.ToInt32(kapcsolt.Tag), Convert.ToInt32(kapcsolt.Name), sakkotadott, sakkbanszin);
+               // MessageBox.Show(sakkszin);
+                sakkbanvane();
+                if (sakkvane)
+                {
+                    //MessageBox.Show(sakkszin);
+                    for (int j = 0; j < 7; j++)
+                    {
+                        for (int i = 0; i < 7; i++)
+                        {
+                            if (babok[i, j].Tipus == "király" && babok[i, j].Szin == sakkszin)
+                            {
+                                kepek[i, j].BackColor = Color.Brown;
+                                MessageBox.Show("Sakkban van a " + sakkszin + " Király");
+                            }
+                        }
+                    }
+                }
                 if (feher)
                 {
                     feher = false;
@@ -301,6 +321,17 @@ namespace Sakk
                 }
                 valaszt = true;
                 torolszinek();
+                sakkvane = false;
+      
+            }
+        }
+
+        private void sakkbanvane()
+        {
+            if(sakkotadott.Count!=0)
+            {
+                sakkvane = true;
+                sakkszin = sakkbanszin[0];
             }
         }
 
@@ -408,17 +439,20 @@ namespace Sakk
                     db = 0;
                 }
             }
+            
         }
 
         private void torolszinek()
         {
             lephetlista.Clear();
             uthetlista.Clear();
+            sakkbanszin.Clear();
+            sakkotadott.Clear();
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (kepek[i, j].BackColor == Color.Orange || kepek[i, j].BackColor == Color.Red)
+                    if (kepek[i, j].BackColor == Color.Orange || kepek[i, j].BackColor == Color.Red||kepek[i,j].BackColor==Color.Brown)
                     {
                         if (i % 2 == 0)
                         {
@@ -641,6 +675,18 @@ namespace Sakk
             }
 
             kiiras();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("A fehér játékos feladta a játékot.\n A nyertes a fekete játékos");
+            Application.Restart();
+        }
+
+        private void feladasfeketebn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("A fekete játékos feladta a játékot.\n A nyertes a fehér játékos");
+            Application.Restart();
         }
     }
 }

@@ -47,6 +47,8 @@ namespace Sakk
             this.visszabutton = new System.Windows.Forms.Button();
             this.LeirasLBL = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.feladasfeherbtn = new System.Windows.Forms.Button();
+            this.feladasfeketebn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -100,7 +102,7 @@ namespace Sakk
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(551, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 23);
+            this.label1.Size = new System.Drawing.Size(63, 23);
             this.label1.TabIndex = 4;
             this.label1.Text = "Első név:";
             // 
@@ -111,7 +113,7 @@ namespace Sakk
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(551, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 23);
+            this.label2.Size = new System.Drawing.Size(91, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "Második név:";
             // 
@@ -241,12 +243,42 @@ namespace Sakk
             this.pictureBox7.TabIndex = 14;
             this.pictureBox7.TabStop = false;
             // 
+            // feladasfeherbtn
+            // 
+            this.feladasfeherbtn.BackColor = System.Drawing.Color.Transparent;
+            this.feladasfeherbtn.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.feladasfeherbtn.Location = new System.Drawing.Point(501, 235);
+            this.feladasfeherbtn.Margin = new System.Windows.Forms.Padding(0);
+            this.feladasfeherbtn.Name = "feladasfeherbtn";
+            this.feladasfeherbtn.Size = new System.Drawing.Size(127, 35);
+            this.feladasfeherbtn.TabIndex = 15;
+            this.feladasfeherbtn.Text = "Fehér feladás";
+            this.feladasfeherbtn.UseVisualStyleBackColor = false;
+            this.feladasfeherbtn.Visible = false;
+            this.feladasfeherbtn.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // feladasfeketebn
+            // 
+            this.feladasfeketebn.BackColor = System.Drawing.Color.Transparent;
+            this.feladasfeketebn.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.feladasfeketebn.Location = new System.Drawing.Point(501, 305);
+            this.feladasfeketebn.Margin = new System.Windows.Forms.Padding(0);
+            this.feladasfeketebn.Name = "feladasfeketebn";
+            this.feladasfeketebn.Size = new System.Drawing.Size(127, 35);
+            this.feladasfeketebn.TabIndex = 16;
+            this.feladasfeketebn.Text = "Fekete feladás";
+            this.feladasfeketebn.UseVisualStyleBackColor = false;
+            this.feladasfeketebn.Visible = false;
+            this.feladasfeketebn.Click += new System.EventHandler(this.feladasfeketebn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.feladasfeketebn);
+            this.Controls.Add(this.feladasfeherbtn);
             this.Controls.Add(this.LeirasLBL);
             this.Controls.Add(this.visszabutton);
             this.Controls.Add(this.tovabbutton);
@@ -300,6 +332,8 @@ namespace Sakk
         private System.Windows.Forms.Button visszabutton;
         private System.Windows.Forms.Label LeirasLBL;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Button feladasfeherbtn;
+        private System.Windows.Forms.Button feladasfeketebn;
     }
 }
 
